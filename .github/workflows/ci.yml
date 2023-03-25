@@ -12,11 +12,11 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
-      - name: Set up JDK 17
+      - name: Set up JDK 8
         uses: actions/setup-java@v3
         with:
-          java-version: '17'
-          distribution: 'temurin'
+          java-version: '8'
+          distribution: 'zulu'
       - name: Validate Gradle wrapper
         uses: gradle/wrapper-validation-action@e6e38bacfdf1a337459f332974bb2327a31aaf4b
       - name: Build with Gradle
@@ -25,5 +25,7 @@ jobs:
           arguments: build
       - name: Google Java Format
         uses: axel-op/googlejavaformat-action@v3.6.0
+        with:
+          args: "--replace"
       - name: deepcode-code-scanning-analysis
         uses: georgismitev/deepcode-code-scanning-analysis@v0.1-pre-release
